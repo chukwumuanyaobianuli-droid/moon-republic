@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
 import { connectDB } from '@/lib/db'
 import Registrant from '@/models/Registrant'
@@ -5,7 +6,7 @@ import Registrant from '@/models/Registrant'
 export async function POST(req) {
   try {
     await connectDB()
-    const { name, email, skill, country } = await req.json()
+    const { name, email, skill, state } = await req.json()
 
     if (!name || !email || !skill) {
       return NextResponse.json({ success: false, message: 'Please fill all fields' }, { status: 400 })
